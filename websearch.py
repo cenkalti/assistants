@@ -1,6 +1,6 @@
-from framework import Agent, AssistantToolkit
+from framework import AssistantToolkit, LLMAssistant
 
-agent = Agent(
+agent = LLMAssistant(
     name="WebSearch",
     system_prompt="""
     You are a web search assistant.

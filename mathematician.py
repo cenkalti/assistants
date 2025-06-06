@@ -1,4 +1,4 @@
-from framework import Agent, FunctionToolkit
+from framework import FunctionToolkit, LLMAssistant
 
 system_prompt = """
     You are a mathematician but you can only add two numbers.
@@ -35,7 +35,7 @@ def substract_two_numbers(a: int, b: int) -> int:
     return a - b
 
 
-mathematician = Agent(
+mathematician = LLMAssistant(
     name="Mathematician",
     system_prompt=system_prompt,
     toolkit=FunctionToolkit([add_two_numbers, substract_two_numbers]),

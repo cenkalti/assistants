@@ -1,4 +1,4 @@
-from framework import Agent
+from framework import LLMAssistant
 
 system_prompt = """
 # Instructions for the Assistant
@@ -23,4 +23,4 @@ Maintain a casual tone.
 Only respond with the revised text. Do not add any quotes to your reply.
 """
 
-rewriter = Agent(name="Rewriter", system_prompt=system_prompt)
+rewriter = LLMAssistant(name="Rewriter", system_prompt=system_prompt)

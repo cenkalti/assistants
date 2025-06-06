@@ -1,13 +1,7 @@
 from fastmcp import Client as FastMCPClient
+from framework import AssistantToolkit, FunctionToolkit, LLMAssistant, MCPToolkit, MultiToolkit
 
 from akson import Chat, Message
-from framework import (
-    Agent,
-    AssistantToolkit,
-    FunctionToolkit,
-    MCPToolkit,
-    MultiToolkit,
-)
 
 system_prompt = f"""
     You are Waffle, a personal AI assistant.
@@ -45,7 +39,7 @@ async def find_movie(name: str) -> str:
     return chat.state.messages[-1].content
 
 
-assistant = Agent(
+assistant = LLMAssistant(
     name="Waffle",
     model="claude-sonnet-4-20250514",
     system_prompt=system_prompt,

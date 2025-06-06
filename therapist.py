@@ -1,8 +1,7 @@
 from typing import List, Optional
 
+from framework import FunctionToolkit, LLMAssistant
 from pydantic import BaseModel, Field
-
-from framework import Agent, FunctionToolkit
 
 
 class TemporalContext(BaseModel):
@@ -217,7 +216,7 @@ def save_info(info: SaveInfo):
         f.write(f"{info.model_dump_json()}\n")
 
 
-therapist = Agent(
+therapist = LLMAssistant(
     name="therapist",
     toolkit=FunctionToolkit([save_info]),
 )

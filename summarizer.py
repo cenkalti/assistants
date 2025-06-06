@@ -1,4 +1,4 @@
-from framework import Agent
+from framework import LLMAssistant
 
 system_prompt = """
 # Instructions for the Assistant
@@ -19,4 +19,4 @@ Keep language simple and clear.
 Reply only with the summary.
 """
 
-rewriter = Agent(name="Summarizer", system_prompt=system_prompt)
+rewriter = LLMAssistant(name="Summarizer", system_prompt=system_prompt)

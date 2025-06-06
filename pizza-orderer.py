@@ -1,6 +1,6 @@
-from framework import Agent, MCPToolkit
+from framework import LLMAssistant, MCPToolkit
 
-pizza_orderer = Agent(
+pizza_orderer = LLMAssistant(
     name="Pizza Orderer",
     system_prompt="You are an AI assistant that can order pizza over the phone.",
     toolkit=MCPToolkit.from_config(

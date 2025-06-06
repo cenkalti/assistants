@@ -1,10 +1,10 @@
 import os
 
-from framework import Agent, MCPToolkit
+from framework import LLMAssistant, MCPToolkit
 
 EXA_API_KEY = os.environ["EXA_API_KEY"]
 
-exa = Agent(
+exa = LLMAssistant(
     name="Exa",
     toolkit=MCPToolkit.from_config(
         command="npm",

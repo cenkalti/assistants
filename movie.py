@@ -1,10 +1,9 @@
 import os
 import time
 
-import putiopy
 import httpx
-
-from framework import Agent, FunctionToolkit
+import putiopy
+from framework import FunctionToolkit, LLMAssistant
 
 PUTIO_TOKEN = os.environ["PUTIO_TOKEN"]
 
@@ -70,7 +69,7 @@ def download_movie(url):
     return "Timeout while downloading the video."
 
 
-movie = Agent(
+movie = LLMAssistant(
     name="Movie",
     system_prompt=system_prompt,
     toolkit=FunctionToolkit(

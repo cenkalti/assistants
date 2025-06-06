@@ -1,6 +1,6 @@
 import os
 
-from framework import Agent, MCPToolkit
+from framework import LLMAssistant, MCPToolkit
 
 GMAIL_KEYS_DIR = os.environ["GMAIL_KEYS_DIR"]
 NPM_CACHE_DIR = os.environ["NPM_CACHE_DIR"]
@@ -29,7 +29,7 @@ image_command = ["node:24", "exec", "@gongrzhe/server-gmail-autoauth-mcp"]
 auth_command = docker_command + port_binding + image_command
 mcp_command = docker_command + image_command
 
-gmail = Agent(
+gmail = LLMAssistant(
     name="Gmail",
     system_prompt=(
         "You are Gmail assistant."

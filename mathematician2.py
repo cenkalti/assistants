@@ -1,6 +1,5 @@
+from framework import FunctionToolkit, LLMAssistant
 from pydantic import BaseModel
-
-from framework import Agent, FunctionToolkit
 
 system_prompt = """
     You are a mathematician but you can only add two numbers.
@@ -30,7 +29,7 @@ class Result(BaseModel):
     answer: int
 
 
-mathematician2 = Agent(
+mathematician2 = LLMAssistant(
     name="Mathematician (Structured Output)",
     system_prompt=system_prompt,
     toolkit=toolkit,
