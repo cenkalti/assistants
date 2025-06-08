@@ -4,6 +4,7 @@ from typing import Optional
 from framework import LLMAssistant, MCPToolkit
 
 VAULT = os.environ["OBSIDIAN_VAULT"]
+NPM_CACHE_DIR = os.environ["NPM_CACHE_DIR"]
 
 
 def docker_command(
@@ -33,6 +34,7 @@ def node_package(package: str, **kwargs):
     kwargs["image"] = "node:24"
     kwargs["entrypoint"] = "/usr/local/bin/npm"
     kwargs["args"] = ["exec", package] + kwargs["args"]
+    kwargs["mounts"] = kwargs.get("mounts", []) + [(NPM_CACHE_DIR, "/root/.npm")]
     return docker_command(**kwargs)
 
 
