@@ -10,6 +10,7 @@ NPM_CACHE_DIR = os.environ["NPM_CACHE_DIR"]
 def docker_command(
     image: str,
     *,
+    name: Optional[str] = None,
     args: list[str] = [],
     env: list[tuple[str, str]] = [],
     entrypoint: Optional[str] = None,
@@ -17,6 +18,8 @@ def docker_command(
     volumes: list[tuple[str, str]] = [],
 ):
     cmd = ["docker", "run", "-i", "--rm"]
+    if name:
+        cmd.extend(["--name", f"akson-{name}"])
     if entrypoint:
         cmd.extend(["--entrypoint", entrypoint])
     for mount in mounts:
@@ -31,11 +34,9 @@ def docker_command(
 
 
 def node_package(package: str, **kwargs):
-    kwargs["image"] = "node:24"
-    kwargs["entrypoint"] = "/usr/local/bin/npm"
     kwargs["args"] = ["exec", package] + kwargs["args"]
     kwargs["mounts"] = kwargs.get("mounts", []) + [(NPM_CACHE_DIR, "/root/.npm")]
-    return docker_command(**kwargs)
+    return docker_command("node:24", name=package, entrypoint="/usr/local/bin/npm", **kwargs)
 
 
 cmd = node_package(
