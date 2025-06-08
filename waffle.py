@@ -1,7 +1,6 @@
+from akson import Chat, Message
 from fastmcp import Client as FastMCPClient
 from framework import AssistantToolkit, FunctionToolkit, LLMAssistant, MCPToolkit, MultiToolkit
-
-from akson import Chat, Message
 
 system_prompt = f"""
     You are Waffle, a personal AI assistant.
@@ -46,7 +45,7 @@ assistant = LLMAssistant(
     toolkit=MultiToolkit(
         [
             FunctionToolkit([find_movie]),
-            AssistantToolkit(["WebSearch", "Gmail"]),
+            AssistantToolkit(["WebSearch", "Gmail", "Obsidian"]),
             MCPToolkit(
                 FastMCPClient(
                     {
