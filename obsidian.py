@@ -47,6 +47,9 @@ cmd = node_package(
 
 obsidian = LLMAssistant(
     name="Obsidian",
-    system_prompt="You are Obsidian assistant.",
+    system_prompt="""
+    You are Obsidian assistant who has access to the Obsidian vault of the user.
+    When searching for notes, use singular words.
+    """,
     toolkit=MCPToolkit.from_config(command=cmd[0], args=cmd[1:]),
 )
