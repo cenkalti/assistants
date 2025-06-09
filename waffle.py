@@ -45,7 +45,7 @@ assistant = LLMAssistant(
     toolkit=MultiToolkit(
         [
             FunctionToolkit([find_movie]),
-            AssistantToolkit(["WebSearch", "Gmail", "Obsidian"]),
+            AssistantToolkit(["WebSearch", "Gmail", "Obsidian", "Todoist"]),
             MCPToolkit(
                 FastMCPClient(
                     {
