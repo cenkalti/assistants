@@ -1,14 +1,11 @@
 import os
 
 import httpx
-from mcp.server.fastmcp import FastMCP
+from framework import FunctionToolkit, LLMAssistant
 
 API_KEY = os.environ["BLAND_API_KEY"]
 
-mcp = FastMCP("bland")
 
-
-@mcp.tool()
 async def make_call(number: str, task: str) -> str:
     """Make a telephone call
 
@@ -46,5 +43,8 @@ async def make_call(number: str, task: str) -> str:
         return response.json()
 
 
-if __name__ == "__main__":
-    mcp.run()
+bland = LLMAssistant(
+    name="Bland",
+    system_prompt="You are an assistant that can make telephone calls",
+    toolkit=FunctionToolkit([make_call]),
+)
