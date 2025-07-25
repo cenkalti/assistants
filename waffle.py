@@ -46,22 +46,22 @@ assistant = LLMAssistant(
         [
             FunctionToolkit([find_movie]),
             AssistantToolkit(["WebSearch", "Gmail", "Obsidian", "Todoist"]),
-            MCPToolkit(
-                FastMCPClient(
-                    {
-                        "mcpServers": {
-                            "fetch": {
-                                "command": "uvx",
-                                "args": ["mcp-server-fetch"],
-                            },
-                            "sequential-thinking": {
-                                "command": "npx",
-                                "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
-                            },
-                        }
-                    }
-                )
-            ),
+            # MCPToolkit(
+            #     FastMCPClient(
+            #         {
+            #             "mcpServers": {
+            #                 "fetch": {
+            #                     "command": "uvx",
+            #                     "args": ["mcp-server-fetch"],
+            #                 },
+            #                 "sequential-thinking": {
+            #                     "command": "npx",
+            #                     "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+            #                 },
+            #             }
+            #         }
+            #     )
+            # ),
         ],
     ),
 )
